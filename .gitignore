@@ -1,0 +1,6 @@
+build
+downloads
+opkg-utils
+opkg_files/control.tar.gz
+Godeps/_workspace/
+Godeps/Readme

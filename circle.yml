@@ -1,0 +1,31 @@
+general:
+  artifacts:
+    - "/home/ubuntu/.go_workspace/src/github.com/shiguredo/fuji/downloads"
+
+machine:
+  environment:
+    GOPATH: "/home/ubuntu/.go_workspace"
+    ORG_PATH: "github.com/shiguredo"
+    REPO_PATH: "${ORG_PATH}/fuji"
+    PATH: "${PATH}:${GOPATH}/bin"
+  services:
+    - docker
+
+dependencies:
+  override:
+    - rm -rf ${GOPATH}/src/${REPO_PATH}
+    - mkdir -p ${GOPATH}/src/${ORG_PATH}
+    - cp -r ../fuji ${GOPATH}/src/${ORG_PATH}
+    - go get github.com/kr/godep
+    - cd ${GOPATH}/src/${REPO_PATH} && godep restore
+
+test:
+  override:
+    - docker run -d -p 1883:1883 shiguredo/mosquitto ; sleep 20
+    - godep go build:
+        pwd: ../.go_workspace/src/${REPO_PATH}
+    - godep go test -coverpkg github.com/shiguredo/fuji ./...:
+        pwd: ../.go_workspace/src/${REPO_PATH}
+  post:
+    - make arm5 arm6 arm7 linux_386 linux_amd64 raspi raspi2 armadillo edison:
+        pwd: ../.go_workspace/src/${REPO_PATH}

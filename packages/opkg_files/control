@@ -1,0 +1,11 @@
+Package: fuji-gw
+Version: FUJI_GIT_TAG
+Description: MQTT Gateway
+Section: devel
+Priority: optional
+Maintainer: Shiguredo Inc. <fuji@shiguredo.jp>
+License: Apache License 2.0
+Architecture: edison
+OE: fuji-gw
+Homepage: https://github.com/shiguredo/fuji
+Source: git://github.com/shiguredo/fuji.git;branch=master

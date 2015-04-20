@@ -1,0 +1,69 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:        fuji-gw
+# Required-Start:  $network $remote_fs $syslog
+# Required-Stop:   $network $remote_fs $syslog
+# Default-Start:   2 3 4 5
+# Default-Stop: 
+# Short-Description: Start fuji-gw daemon
+### END INIT INFO
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
+
+. /lib/lsb/init-functions
+
+DAEMON=/usr/local/bin/fuji-gw
+PIDFILE=/var/run/fuji-gwd.pid
+FUJI_GW_CONF=/etc/fuji-gw/config.ini
+
+test -x $DAEMON || exit 5
+
+
+LOCKFILE=/var/lock/fuji-gw
+
+lock_fuji_gwdate() {
+	if [ -x /usr/bin/lockfile-create ]; then
+		lockfile-create $LOCKFILE
+		lockfile-touch $LOCKFILE &
+		LOCKTOUCHPID="$!"
+	fi
+}
+
+unlock_fuji_gwdate() {
+	if [ -x /usr/bin/lockfile-create ] ; then
+		kill $LOCKTOUCHPID
+		lockfile-remove $LOCKFILE
+	fi
+}
+
+if test "$(uname -s)" = "Linux"; then
+        FUJI_GW_OPTS="$FUJI_GW_OPTS -d -c $FUJI_GW_CONF"
+fi
+
+case $1 in
+	start)
+		log_daemon_msg "Starting Fuji-gw server" "fuji-gw"
+		lock_fuji_gwdate
+  		start-stop-daemon --start --quiet --oknodo --pidfile $PIDFILE --startas $DAEMON -- $FUJI_GW_OPTS
+		status=$?
+		unlock_fuji_gwdate
+		log_end_msg $status
+  		;;
+	stop)
+		log_daemon_msg "Stopping Fuji-gw server" "fuji-gw"
+  		start-stop-daemon --stop --quiet --oknodo --pidfile $PIDFILE
+		log_end_msg $?
+		rm -f $PIDFILE
+  		;;
+	restart)
+		$0 stop && sleep 2 && $0 start
+  		;;
+	status)
+		status_of_proc $DAEMON "Fuji-gw server"
+		;;
+	*)
+		echo "Usage: $0 {start|stop|restart|status}"
+		exit 2
+		;;
+esac

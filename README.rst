@@ -36,6 +36,20 @@ Comming Soon
 - FreeBSD
 - Windows (7 or later)
 
+Downloads
+=========
+
+:URL: https://github.com/shiguredo/fuji/releases/tag/0.2.0
+
+- `fuji-gw_0.2.0_arm5.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.0/fuji-gw_0.2.0_arm5.tar.gz>`_
+- `fuji-gw_0.2.0_arm6.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.0/fuji-gw_0.2.0_arm6.tar.gz>`_
+- `fuji-gw_0.2.0_arm7.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.0/fuji-gw_0.2.0_arm7.tar.gz>`_
+- `fuji-gw_0.2.0_edison_386.ipk <https://github.com/shiguredo/fuji/releases/download/0.2.0/fuji-gw_0.2.0_edison_386.ipk>`_
+- `fuji-gw_0.2.0_linux_386.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.0/fuji-gw_0.2.0_linux_386.tar.gz>`_
+- `fuji-gw_0.2.0_linux_amd64.tar.gz <https://github.com/shiguredo/fuji/releases/download/0.2.0/fuji-gw_0.2.0_linux_amd64.tar.gz>`_
+- `fuji-gw_0.2.0_raspi2_arm7.deb <https://github.com/shiguredo/fuji/releases/download/0.2.0/fuji-gw_0.2.0_raspi2_arm7.deb>`_
+- `fuji-gw_0.2.0_raspi_arm6.deb <https://github.com/shiguredo/fuji/releases/download/0.2.0/fuji-gw_0.2.0_raspi_arm6.deb>`_
+
 ChangeLog
 =========
 

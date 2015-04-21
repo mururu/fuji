@@ -24,7 +24,7 @@
 
     interval = 10
     payload = Hello world.
-	subscribe = true
+    subscribe = true
 
 [status]
 

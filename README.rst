@@ -28,7 +28,7 @@ Supported Hardware
 - `Raspberry Pi <http://www.raspberrypi.org/>`_ series
 - `Armadillo-IoT <http://armadillo.atmark-techno.com/armadillo-iot>`_
 - `Intel Edison <http://www.intel.com/content/www/us/en/do-it-yourself/edison.html?_ga=1.251267654.1109522025.1429502791>`_
-- Linux i686/i386
+- Linux amd64/i386
 
 Comming Soon
 
